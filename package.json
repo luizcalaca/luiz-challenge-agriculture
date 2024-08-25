@@ -1,0 +1,51 @@
+{
+  "name": "serasa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "build": "npx -y tsc",
+    "dev": "nodemon --watch \"./src/**\" --ext \"ts\" --exec \"ts-node src/server.ts\"",
+    "start": "ts-node src/server.ts",
+    "test": "mocha",
+    "test:coverage": "nyc mocha"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "1.0.2",
+    "@types/chai": "4.3.0",
+    "@types/chai-http": "4.2.0",
+    "@types/express": "4.17.13",
+    "@types/jsonwebtoken": "8.5.8",
+    "@types/mocha": "9.1.0",
+    "@types/node": "16.11.31",
+    "@types/sinon": "10.0.11",
+    "@types/sinon-chai": "3.2.9",
+    "@typescript-eslint/eslint-plugin": "5.3.1",
+    "@typescript-eslint/parser": "5.3.1",
+    "chai": "4.3.6",
+    "chai-http": "4.3.0",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-airbnb-typescript": "15.0.0",
+    "eslint-plugin-editorconfig": "3.2.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-mocha": "9.0.0",
+    "eslint-plugin-sonarjs": "0.10.0",
+    "mocha": "9.2.1",
+    "nodemon": "2.0.14",
+    "nyc": "15.1.0",
+    "sequelize-cli": "6.2",
+    "sinon": "13.0.1",
+    "sinon-chai": "3.7.0",
+    "ts-node": "10.9.1",
+    "typescript": "4.4.4"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "mysql2": "2.3.0"
+  },
+  "keywords": [],
+  "author": "Calaça",
+  "license": "MIT"
+}

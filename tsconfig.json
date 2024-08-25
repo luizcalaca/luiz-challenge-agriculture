@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                       // Versão ECMAScript de saída
+    "module": "commonjs",                   // Sistema de módulos usado pelo Node.js
+    "strict": true,                         // Habilita verificações de tipo rigorosas
+    "esModuleInterop": true,                // Habilita interoperabilidade entre CommonJS e ES Modules
+    "skipLibCheck": true,                   // Ignora a verificação de tipos das bibliotecas
+    "forceConsistentCasingInFileNames": true, // Garante consistência de case nos nomes de arquivos                     // Diretório raiz dos arquivos fonte
+  },
+  "include": ["src/**/*"],                  // Inclui todos os arquivos e subpastas em `src/`
+  "exclude": ["node_modules", "dist"]       // Exclui as pastas que não devem ser compiladas
+}
