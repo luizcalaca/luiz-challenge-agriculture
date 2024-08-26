@@ -26,6 +26,10 @@
     "mocha"
   ],
   "rules": {
+    "curly": "off",
+    "nonblock-statement-body-position": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-console": "off",
     "camelcase": "warn",
     "arrow-parens": [
