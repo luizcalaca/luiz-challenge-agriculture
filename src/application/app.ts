@@ -5,7 +5,7 @@ import errorHandler from '../presentation/middlewares/errorHandler';
 const app = express();
 
 app.use(express.json());
-app.use(produtorRouter);
+app.use('/produtores', produtorRouter);
 app.use(errorHandler);
 
 export default app;
