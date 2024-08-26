@@ -18,7 +18,6 @@ export default class ProdutorController {
   public create = async (request: Request, response: Response, next: NextFunction): Promise<Response | undefined> => {
     try {
       await this.produtorUseCase.create(request.body);
-
       return response.status(200).json({ message: 'Produtor cadastrado com sucesso!' });
     } catch (error) {
       console.log('Error', error);
@@ -30,7 +29,6 @@ export default class ProdutorController {
   public update = async (request: Request, response: Response, next: NextFunction): Promise<Response | undefined> => {
     try {
       await this.produtorUseCase.update(request.body);
-
       return response.status(200).json({ message: 'Produtor atualizado com sucesso!' });
     } catch (error) {
       console.log('Error', error);
@@ -42,7 +40,6 @@ export default class ProdutorController {
   public delete = async (request: Request, response: Response, next: NextFunction): Promise<Response | undefined> => {
     try {
       await this.produtorUseCase.delete(request.body);
-
       return response.status(200).json({ message: 'Produtor deletado com sucesso!' });
     } catch (error) {
       console.log('Error', error);
