@@ -1,6 +1,4 @@
-class Produtor {
-  nomeProdutor!: string
-  cpfCnpj!:string
+export default class Produtor {
+  nomeProdutor!: string;
+  cpfCnpj!:string;
 }
-
-export { Produtor }
