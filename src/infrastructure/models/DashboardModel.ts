@@ -9,14 +9,13 @@ export default class FazendaModel extends PostgresAdapter {
     return result.rows[0].total_fazendas;
   }
 
-  // Função para obter o total de fazendas em hectares (área total)
+
   async function getTotalAreaHectares() {
     const query = 'SELECT SUM(area_total) AS total_area_hectares FROM fazendas';
     const result = await this.connection.query(query);
     return result.rows[0].total_area_hectares;
   }
 
-  // Função para obter dados para o gráfico de pizza por estado
   async function getFazendasPorEstado() {
     const query = `
       SELECT
@@ -33,7 +32,6 @@ export default class FazendaModel extends PostgresAdapter {
     return result.rows;
   }
 
-  // Função para obter dados para o gráfico de pizza por cultura
   async function getFazendasPorCultura() {
     const query = `
       SELECT
@@ -50,7 +48,6 @@ export default class FazendaModel extends PostgresAdapter {
     return result.rows;
   }
 
-  // Função para obter dados para o gráfico de pizza por uso de solo (área agricultável e vegetação)
   async function getUsoSolo() {
     const query = `
       SELECT
@@ -63,7 +60,6 @@ export default class FazendaModel extends PostgresAdapter {
     return result.rows[0];
   }
 
-  // Função principal para coordenar as chamadas de funções menores
   async function getDashboardData() {
       const totalFazendas = await getTotalFazendas();
       const totalAreaHectares = await getTotalAreaHectares();
