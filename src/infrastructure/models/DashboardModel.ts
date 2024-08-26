@@ -1,22 +1,19 @@
-import Fazenda from '../../domain/entities/Fazenda';
 import PostgresAdapter from '../adapters/PostgresAdapter';
 
 export default class FazendaModel extends PostgresAdapter {
-
-  async function getTotalFazendas() {
+  async getTotalFazendas(): Promise<void> {
     const query = 'SELECT COUNT(*) AS total_fazendas FROM fazendas';
     const result = await this.connection.query(query);
     return result.rows[0].total_fazendas;
   }
 
-
-  async function getTotalAreaHectares() {
+  async getTotalAreaHectares(): Promise<void> {
     const query = 'SELECT SUM(area_total) AS total_area_hectares FROM fazendas';
     const result = await this.connection.query(query);
     return result.rows[0].total_area_hectares;
   }
 
-  async function getFazendasPorEstado() {
+  async getFazendasPorEstado(): Promise<any> {
     const query = `
       SELECT
         l.estado,
@@ -28,11 +25,11 @@ export default class FazendaModel extends PostgresAdapter {
       GROUP BY
         l.estado;
     `;
-    const result = await pool.query(query);
+    const result = await this.connection.query(query);
     return result.rows;
   }
 
-  async function getFazendasPorCultura() {
+  async getFazendasPorCultura(): Promise<any[]> {
     const query = `
       SELECT
         c.nome_cultura,
@@ -48,7 +45,7 @@ export default class FazendaModel extends PostgresAdapter {
     return result.rows;
   }
 
-  async function getUsoSolo() {
+  async getUsoSolo(): Promise<void> {
     const query = `
       SELECT
         SUM(area_agriculturavel) AS total_area_agriculturavel,
@@ -56,23 +53,23 @@ export default class FazendaModel extends PostgresAdapter {
       FROM
         fazendas;
     `;
-    const result = await pool.query(query);
+    const result = await this.connection.query(query);
     return result.rows[0];
   }
 
-  async function getDashboardData() {
-      const totalFazendas = await getTotalFazendas();
-      const totalAreaHectares = await getTotalAreaHectares();
-      const fazendasPorEstado = await getFazendasPorEstado();
-      const fazendasPorCultura = await getFazendasPorCultura();
-      const usoSolo = await getUsoSolo();
+  async getDashboardData(): Promise<any> {
+    const totalFazendas = await this.getTotalFazendas();
+    const totalAreaHectares = await this.getTotalAreaHectares();
+    const fazendasPorEstado = await this.getFazendasPorEstado();
+    const fazendasPorCultura = await this.getFazendasPorCultura();
+    const usoSolo = await this.getUsoSolo();
 
-      return {
-        totalFazendas,
-        totalAreaHectares,
-        fazendasPorEstado,
-        fazendasPorCultura,
-        usoSolo,
-      };
+    return {
+      totalFazendas,
+      totalAreaHectares,
+      fazendasPorEstado,
+      fazendasPorCultura,
+      usoSolo,
+    };
   }
 }
