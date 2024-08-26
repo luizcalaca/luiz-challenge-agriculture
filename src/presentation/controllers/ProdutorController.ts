@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import ProdutorUseCase from '../../domain/usecases/ProdutorUseCase';
 import ProdutorRepository from '../../domain/repositories/ProdutorRepository';
 import ProdutorModel from '../../infrastructure/models/ProdutorModel';
-import errorHandler from '../middlewares/errorHandler';
 
 export default class ProdutorController {
   private produtorModel: ProdutorModel;
@@ -21,7 +20,7 @@ export default class ProdutorController {
       await this.produtorUseCase.create(request.body);
       return response.status(200).json({ message: 'Produtor cadastrado com sucesso!' });
     } catch (error) {
-      next(errorHandler);
+      next(error);
     }
   };
 }
