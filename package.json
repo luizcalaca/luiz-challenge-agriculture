@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "npx -y tsc",
-    "dev": "nodemon --watch \"./src/**\" --ext \"ts\" --exec \"ts-node src/server.ts\"",
-    "start": "ts-node src/server.ts",
+    "dev": "nodemon --watch \"./src/**\" --ext \"ts\" --exec \"ts-node src/application/server.ts\"",
+    "start": "ts-node src/application/server.ts",
     "test": "mocha",
     "test:coverage": "nyc mocha"
   },

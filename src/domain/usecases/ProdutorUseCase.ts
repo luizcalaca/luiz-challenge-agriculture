@@ -9,16 +9,32 @@ import InvalidCNPJ from '../exceptions/InvalidCNPJ';
 export default class ProdutorUseCase {
   constructor(private produtorRepository: ProdutorRepository) {}
 
+  // eslint-disable-next-line complexity
   public async create(entity: Produtor): Promise<void> {
-    if (isCPFOrCNPJ(entity.cpfCnpj) === 'Invalid')
+    console.log('UseCase', entity);
+
+    const cpfOrCnpjType = isCPFOrCNPJ(entity.cpfCnpj);
+
+    if (cpfOrCnpjType === 'Invalid') {
       throw new InvalidCPFCNPJ('O número informado é inválido', 'ValidationError');
+    }
 
-    if (isCPFOrCNPJ(entity.cpfCnpj) === 'CPF' && cpf.isValid(entity.cpfCnpj) === false)
+    if (cpfOrCnpjType === 'CPF' && !cpf.isValid(entity.cpfCnpj)) {
       throw new InvalidCPF('O número CPF é inválido', 'ValidationError');
+    }
 
-    if (cnpj.isValid(entity.cpfCnpj) === false)
+    if (cpfOrCnpjType === 'CNPJ' && !cnpj.isValid(entity.cpfCnpj)) {
       throw new InvalidCNPJ('O número CNPJ é inválido', 'ValidationError');
+    }
 
     await this.produtorRepository.create(entity);
+  }
+
+  public async update(entity: Produtor): Promise<void> {
+    await this.produtorRepository.update(entity);
+  }
+
+  public async delete(entity: Produtor): Promise<void> {
+    await this.produtorRepository.delete(entity);
   }
 }

@@ -5,6 +5,15 @@ export default class ProdutorRepository {
   constructor(private persistence: IConnectionDatabase) { }
 
   public async create(entity: Produtor): Promise<void> {
+    console.log('Repository', entity);
+    await this.persistence.connection.query(entity);
+  }
+
+  public async update(entity: Produtor): Promise<void> {
+    await this.persistence.connection.query(entity);
+  }
+
+  public async delete(entity: Produtor): Promise<void> {
     await this.persistence.connection.query(entity);
   }
 }

@@ -3,6 +3,7 @@ import PostgresAdapter from '../adapters/PostgresAdapter';
 
 export default class ProdutorModel extends PostgresAdapter {
   public async create(entity: Produtor): Promise<void> {
+    console.log('Model', entity);
     await this.connection.query(
       'INSERT INTO produtores (cpf_cnpj, nome_produtor) VALUES ($1, $2)',
       [entity.cpfCnpj, entity.nomeProdutor],
