@@ -5,7 +5,7 @@ import app from '../../src/application/app';
 import { produtorMock } from '../mocks/produtor.mock';
 chai.use(chaiHttp);
 
-describe('POST /produtores', () => {
+describe('Ações em /produtores', () => {
 
   it('Salva um produtor', async () => {
     const httpResponse = await chai.request(app).post('/produtores').send(produtorMock);

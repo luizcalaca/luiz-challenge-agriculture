@@ -4,10 +4,10 @@ import app from '../../src/application/app';
 import mockFazendas from '../mocks/fazenda.mock';
 chai.use(chaiHttp);
 
-describe('POST /fazendas', () => {
+describe('Get /dashboard', () => {
 
-  it('Salva uma fazenda', async () => {
-    const httpResponse = await chai.request(app).post('/fazendas').send(mockFazendas[0]);
+  it('Obtém dados para o dashboard', async () => {
+    const httpResponse = await chai.request(app).get('/dashboard')
     expect(httpResponse.status).to.equal(200);
   });
 
