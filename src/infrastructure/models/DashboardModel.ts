@@ -1,6 +1,6 @@
 import PostgresAdapter from '../adapters/PostgresAdapter';
 
-export default class FazendaModel extends PostgresAdapter {
+export default class DashboardModel extends PostgresAdapter {
   async getTotalFazendas(): Promise<void> {
     const query = 'SELECT COUNT(*) AS total_fazendas FROM fazendas';
     const result = await this.connection.query(query);
@@ -58,11 +58,17 @@ export default class FazendaModel extends PostgresAdapter {
   }
 
   async getDashboardData(): Promise<any> {
-    const totalFazendas = await this.getTotalFazendas();
-    const totalAreaHectares = await this.getTotalAreaHectares();
-    const fazendasPorEstado = await this.getFazendasPorEstado();
-    const fazendasPorCultura = await this.getFazendasPorCultura();
-    const usoSolo = await this.getUsoSolo();
+    const [totalFazendas, totalAreaHectares,
+      fazendasPorEstado,
+      fazendasPorCultura,
+      usoSolo,
+    ] = await Promise.all([
+      this.getTotalFazendas(),
+      this.getTotalAreaHectares(),
+      this.getFazendasPorEstado(),
+      this.getFazendasPorCultura(),
+      this.getUsoSolo(),
+    ]);
 
     return {
       totalFazendas,
