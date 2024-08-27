@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import app from '../../src/application/app';
-import { produtorMock } from '../mocks/produtores.mock';
+import { produtorMock } from '../mocks/produtor.mock';
 chai.use(chaiHttp);
 
 describe('POST /produtores', () => {
