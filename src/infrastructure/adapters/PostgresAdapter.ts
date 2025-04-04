@@ -6,11 +6,11 @@ export default class PostgresAdapter implements IConnectionDatabase {
 
   constructor() {
     this.connection = new Pool({
-      user: 'seu_usuario',
-      host: 'localhost',
-      database: 'seu_banco',
-      password: 'sua_senha',
-      port: 5432,
+      user: process.env.PGUSER,
+      host: process.env.PGHOST,
+      database: process.env.PGDATABASE,
+      password: process.env.PGPASSWORD,
+      port: Number(process.env.PGPORT),
     });
   }
 }
